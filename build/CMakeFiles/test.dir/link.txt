@@ -1,0 +1,1 @@
+/opt/rh/devtoolset-8/root/usr/bin/c++   -g -std=c++17 -fPIC   CMakeFiles/test.dir/test/test.cpp.o  -o test   -L/home/learn/gitpro/webserver/lib  -Wl,-rpath,"\$ORIGIN/../lib" -llogging -llinuxOpt -lpthread -lasynclogging -lmprpc 
