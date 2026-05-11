@@ -17,5 +17,4 @@ int main(){
 
     LOG_INFO("%ld",time2);
 
-    
 }
