@@ -1,10 +1,8 @@
 # webserver
 
 #### Description
-打算用muduo来作为webserver网络库，进行学习
+plan to muduo as network , logging to print terminal , asynclogging to write log file , threadpool to create work queue , stmt mysqlconnect to prevent sql inject
 
-#### Software Architecture
-Software architecture description
 
 #### Installation
 
