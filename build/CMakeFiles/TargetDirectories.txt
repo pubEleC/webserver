@@ -1,7 +1,0 @@
-/home/learn/gitpro/webserver/build/CMakeFiles/install/strip.dir
-/home/learn/gitpro/webserver/build/CMakeFiles/install/local.dir
-/home/learn/gitpro/webserver/build/CMakeFiles/install.dir
-/home/learn/gitpro/webserver/build/CMakeFiles/list_install_components.dir
-/home/learn/gitpro/webserver/build/CMakeFiles/rebuild_cache.dir
-/home/learn/gitpro/webserver/build/CMakeFiles/edit_cache.dir
-/home/learn/gitpro/webserver/build/CMakeFiles/test.dir
