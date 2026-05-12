@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(mytest VERSION 1.0)
+project(webserver VERSION 1.0)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED true)
 
@@ -12,15 +12,15 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -std=c++17 -fPIC")
 file(GLOB_RECURSE SRC_SOURCES "src/*.cpp")
 
 message(STATUS "Found library sources: ${SRC_SOURCES}") 
-#add_library(mytest SHARED ${SRC_SOURCES})
+add_library(webserver SHARED ${SRC_SOURCES})
 
-# target_include_directories(mytest PUBLIC
-#     ${CMAKE_SOURCE_DIR}/include
-# )
+target_include_directories(webserver PUBLIC
+    ${CMAKE_SOURCE_DIR}/include
+)
 
-# set_target_properties(mytest PROPERTIES
-#     LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib
-# )
+set_target_properties(webserver PROPERTIES
+    LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib
+)
 
 # cmake3 --install .
 set(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}" CACHE PATH "" FORCE)
@@ -40,7 +40,7 @@ foreach(test_file ${TEST_SOURCES})
     # 动态生成可执行文件
     add_executable(${test_name} ${test_file})
     
-    target_link_libraries(${test_name} PUBLIC logging linuxOpt pthread asynclogging mprpc)
+    target_link_libraries(${test_name} PUBLIC logging linuxOpt pthread asynclogging mprpc pool)
     
     target_include_directories(${test_name} PUBLIC "${CMAKE_SOURCE_DIR}/include")
     target_include_directories(${test_name} PUBLIC "usr/local/include")
