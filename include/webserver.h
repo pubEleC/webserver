@@ -11,8 +11,9 @@
 #include <signal.h>
 #include <stdio.h>
 #include <unistd.h>
-
 #include <unordered_map>
+
+//class HttpConnection;
 
 using namespace muduo;
 using namespace muduo::net;
@@ -22,6 +23,8 @@ class WebServer{
 public:
     WebServer(EventLoop* loop,const InetAddress& listenAddr,const std::string& nameArg);
     
+    ~WebServer();
+
     void start(){server_.start();}
 
 private:
@@ -34,6 +37,10 @@ private:
 
     TcpServer server_;
     EventLoop *loop_;
+
+    //std::unique_ptr<HttpConnection> httpconn_;
+
+    
 
     //std::unordered_map<TcpConnectionPtr,std::string> ump;
 

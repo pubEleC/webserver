@@ -1,20 +1,40 @@
-#include "myutils/timeOpt.h"
-#include "myutils/Logger.h"
+#include "myutils/common.h"
+#include "webserver.h"
+using namespace muduo;
+using namespace muduo::net;
+using namespace std::placeholders;
 
+void server(int port){
 
+    EventLoop loop;
+    InetAddress addr(port);
+    WebServer server(&loop,addr,"web");
 
-int main(){
+    server.start();
+    loop.loop();
 
-    int64_t time = get_now_time(timeType::s);
+    //telnet 127.0.0.1 22001
+    //ctrl + ]
+    //quit
+}
 
-    LOG_INFO("%ld",time);
+void client(int port){
 
-    std::string str = time_to_String(time*1000000);
+}
 
-    LOG_INFO("%s",str.c_str());
+int main(int argc,char* argv[]){
 
-    int64_t time2 = string_to_time(str);
+    if(argc != 2){
+        std::cout << "arg wrong" << '\n';
+    }
 
-    LOG_INFO("%ld",time2);
+    int flag = atoi(argv[1]);
+    const int port = 22101;
+    if(flag == 1){
+        server(port);
+    }
+    else{
+        client(port);
+    }
 
 }

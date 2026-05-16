@@ -1,5 +1,7 @@
 #pragma once
 
+namespace myutils{
+
 class noncopyable{
 
 //这里public private都可以
@@ -13,3 +15,5 @@ protected:
     noncopyable() = default;
     ~noncopyable() = default;
 };
+
+}

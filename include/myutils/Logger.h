@@ -2,9 +2,11 @@
 
 #include <string>
 
-#include "noncopyable.h"
 #include <iostream>
 #include "Timestamp.h"
+
+// using namespace myutils;
+
 inline std::string get_cur_file_name(const std::string& name){
     size_t length = name.size()-1;
     size_t R = length;
@@ -29,7 +31,7 @@ inline std::string get_cur_file_name(const std::string& name){
 do\
 {\
     char buf[1024] = {0}; \
-    int count = snprintf(buf, 1024, "[%s][%s][%s][%s][%d]",level,TimeStamp::now().toString().c_str(), CUR_FILE_NAME,__FUNCTION__,__LINE__); \
+    int count = snprintf(buf, 1024, "[%s][%s][%s][%s][%d]",level,myutils::TimeStamp::now().toString().c_str(), CUR_FILE_NAME,__FUNCTION__,__LINE__); \
     snprintf(buf+count, 1024-count, _format, ##__VA_ARGS__); \
     std::cout << buf << std::endl;\
 }while(0)
@@ -46,34 +48,34 @@ do\
 do\
 {\
     char buf[1024] = {0}; \
-    int count = snprintf(buf, 1024, "[INFO][%s][%s][%s][%d]", TimeStamp::now().toString().c_str(),CUR_FILE_NAME,__FUNCTION__,__LINE__); \
+    int count = snprintf(buf, 1024, "[INFO][%s][%s][%s][%d]", myutils::TimeStamp::now().toString().c_str(),CUR_FILE_NAME,__FUNCTION__,__LINE__); \
     std::cout << buf << str << std::endl;\
 }while(0)
 
 
 
 //定义日志级别  INFO ERROR FATAL DEBUG(较多)
-enum LogLevel
-{
-    INFO,
-    ERROR,
-    FATAL,
-    DEBUG
-};
+// enum LogLevel
+// {
+//     INFO,
+//     ERROR,
+//     FATAL,
+//     DEBUG
+// };
 
-class Logger : noncopyable{
-public:
-    static Logger& instance();
+// class Logger : noncopyable{
+// public:
+//     static Logger& instance();
 
-    void setLogLevel(int level);
+//     void setLogLevel(int level);
 
-    void log(const std::string& msg);
+//     void log(const std::string& msg);
 
-private:
+// private:
 
-    int logLevel_;
+//     int logLevel_;
 
-    Logger(){
+//     Logger(){
 
-    }
-};
+//     }
+// };

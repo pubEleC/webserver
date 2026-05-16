@@ -3,6 +3,9 @@
 #include<iostream>
 #include <time.h>
 #include <chrono>
+
+namespace myutils{
+
 class TimeStamp
 {
 public:
@@ -26,3 +29,5 @@ private:
     int64_t microSecondsSinceEpoch_;
     
 };
+
+}

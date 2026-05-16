@@ -22,6 +22,12 @@ set_target_properties(webserver PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib
 )
 
+target_link_libraries(webserver PUBLIC                    # 或 PRIVATE，看需求
+    pthread
+    muduo_net
+    muduo_base
+)
+
 # cmake3 --install .
 set(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}" CACHE PATH "" FORCE)
 
@@ -40,7 +46,7 @@ foreach(test_file ${TEST_SOURCES})
     # 动态生成可执行文件
     add_executable(${test_name} ${test_file})
     
-    target_link_libraries(${test_name} PUBLIC logging linuxOpt pthread asynclogging mprpc pool)
+    target_link_libraries(${test_name} PUBLIC logging linuxOpt pthread muduo_net muduo_base asynclogging mprpc pool webserver)
     
     target_include_directories(${test_name} PUBLIC "${CMAKE_SOURCE_DIR}/include")
     target_include_directories(${test_name} PUBLIC "usr/local/include")
